@@ -1,0 +1,55 @@
+@model FlightCreateViewModel
+
+<div class="row">
+  <div class="col-12">
+    <div class="bg-white p-4"></div>
+    <h2>Flight Create</h2>
+    <form action="Create" method="post" novalidate>
+      <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+      <div class="mb-3">
+        <label asp-for="From" class="form-label"></label>
+        <input asp-for="From" class="form-control" />
+        <span asp-validation-for="From" class="text-danger"></span>
+      </div>
+
+      <div class="mb-3">
+        <label asp-for="To" class="form-label"></label>
+        <input asp-for="To" class="form-control" />
+        <span asp-validation-for="To" class="text-danger"></span>
+      </div>
+
+      <div class="mb-3">
+        <label asp-for="Depart" class="form-label"></label>
+        <input type="date" asp-for="Depart" class="form-control" />
+        <span asp-validation-for="Depart" class="text-danger"></span>
+      </div>
+
+      <div class="mb-3">
+        <label asp-for="Return" class="form-label"></label>
+        <input type="date" asp-for="Return" class="form-control" />
+        <span asp-validation-for="Return" class="text-danger"></span>
+      </div>
+      <div class="mb-3">
+        <label asp-for="Time" class="form-label"></label>
+        <input asp-for="Time" class="form-control" />
+        <span asp-validation-for="Time" class="text-danger"></span>
+      </div>
+
+      <div class="mb-3">
+        <label asp-for="Guest" class="form-label"></label>
+        <select
+          class="form-select inp-height inp-width"
+          aria-label="Default select example"
+          asp-for="Guest"
+        >
+          <option selected value="" value="Adult">Adult</option>
+          <option value="Child(2-12 age)">Child(2-12 age)</option>
+          <option value="Infant(0-2 age)">Infant(0-2 age)</option>
+        </select>
+        <span asp-validation-for="Guest" class="text-danger"></span>
+      </div>
+      <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+  </div>
+</div>

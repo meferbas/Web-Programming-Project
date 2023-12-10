@@ -17,45 +17,71 @@
       <nav class="navbar navbar-expand-lg bg-white shadow-sm">
         <div class="container">
           <ul class="navbar-nav ms-auto">
-            @if(User.Identity!.IsAuthenticated)
-              {
-                <li class="nav-item">
-                  <a class="nav-link"  asp-controller="Home" asp-action="Index">Home</a>
-                    
-                </li>
-                <li class="nav-item">
-              
-                  <a href="" class="nav-link">@User.Identity.Name</a>
-                </li>
-                <li class="nav-item">
-                  <a href="/users/logout" class="nav-link">Logout</a>
-                </li>
-              }else
-              {
-                <li class="nav-item">
-                  <a class="nav-link"  asp-controller="Home" asp-action="Index">Home</a>
-                    
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link"  asp-controller="Users" asp-action="SignUp">Sign up</a>
-                    
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" asp-controller="Users" asp-action="SignIn">Sign In</a>
-                    
-                </li>
-              }
-            
+            @if(User.Identity!.IsAuthenticated) {
             <li class="nav-item">
+              <a class="nav-link" asp-controller="Flight" asp-action="Create"
+                >Routes</a >
+             
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" asp-controller="Flight" asp-action="Index"
+                >Home</a>
               
-              <select  class="form-select " aria-label="Default select example">
-                <option selected value="" value="1"><a class="nav-link" language="english" asp-controller="Home" asp-action="Privacy">TR</a></option>
-                <option value="2"><a class="nav-link" language="english" asp-controller="Home" asp-action="Privacy">EN</a></option>
-                <option value="3"><a class="nav-link" language="english" asp-controller="Home" asp-action="Privacy">FR</a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link">@User.Identity.Name</a>
+            </li>
+            <li class="nav-item">
+              <a href="/users/logout" class="nav-link">Logout</a>
+            </li>
+            }else {
+            <li class="nav-item">
+              <a class="nav-link" asp-controller="Flight" asp-action="Index"
+                >Home</a>
+              
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" asp-controller="Users" asp-action="SignUp"
+                >Sign up</a>
+              
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" asp-controller="Users" asp-action="SignIn"
+                >Sign In</a>
+              
+            </li>
+            }
 
+            <li class="nav-item">
+              <select class="form-select" aria-label="Default select example">
+                <option selected value="" value="1">
+                  <a
+                    class="nav-link"
+                    language="english"
+                    asp-controller="Home"
+                    asp-action="Privacy"
+                    >TR</a>
+                  
                 </option>
-            </select>
-                
+                <option value="2">
+                  <a
+                    class="nav-link"
+                    language="english"
+                    asp-controller="Home"
+                    asp-action="Privacy"
+                    >EN</a>
+                  
+                </option>
+                <option value="3">
+                  <a
+                    class="nav-link"
+                    language="english"
+                    asp-controller="Home"
+                    asp-action="Privacy"
+                    >FR</a>
+                  
+                </option>
+              </select>
             </li>
           </ul>
         </div>
