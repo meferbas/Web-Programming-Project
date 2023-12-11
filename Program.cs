@@ -19,6 +19,11 @@ builder.Services.AddDbContext<DataContext>(options =>
 );
 
 builder.Services.AddScoped<IUserRepository, EfUserRepository>(); // yeni geldi
+
+// builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options=>{
+//     options.LoginPath="/Users/SignUp";
+// });
+builder.Services.AddScoped<IFlightRepository, EfFlightRepository>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 var app = builder.Build();
 
@@ -44,6 +49,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Flight}/{action=Index}/{id?}");
 
 app.Run();
