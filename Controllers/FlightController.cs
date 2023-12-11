@@ -73,4 +73,19 @@ public class FlightController : Controller
             }
             return View();
         }
+
+        
+        public async Task<IActionResult> List()
+        {
+            var flightId=int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "");
+            var role=User.FindFirstValue(ClaimTypes.Role);
+            var flight=_repository.Flights;
+            
+            if(string.IsNullOrEmpty(role))
+            {
+                flight=flight.Where(i=>i.FLightId==flightId);
+            }
+
+            return View(await flight.ToListAsync());
+        }
 }

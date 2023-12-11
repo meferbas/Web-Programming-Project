@@ -18,5 +18,6 @@ namespace AirlineSeatReservationSystem.Data.Concrete
             _context.Flights.Add(Flight);
             _context.SaveChanges();
         }
+        
     }
 }

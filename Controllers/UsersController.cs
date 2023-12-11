@@ -93,7 +93,7 @@ namespace AirlineSeatReservationSystem.Controllers
                     useClaims.Add(new Claim(ClaimTypes.NameIdentifier, isUser.Email ?? ""));
                     if (isUser.Email == "g211210013@sakarya.edu.tr" && isUser.Password == "sau")
                     {
-                        useClaims.Add(new Claim(ClaimTypes.Role, "Admin"));
+                        useClaims.Add(new Claim(ClaimTypes.Role, "admin"));
                     }
                     var claimsIdentity = new ClaimsIdentity(useClaims, CookieAuthenticationDefaults.AuthenticationScheme);
                     var authProperties = new AuthenticationProperties
