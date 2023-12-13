@@ -5,7 +5,7 @@ namespace AirlineSeatReservationSystem.Entity;
         public class Flight
         {
             [Key]
-            public int FLightId { get; set; }
+            public int FlightId { get; set; }
             
             public string? From { get; set; }
             public string? To  { get; set; }

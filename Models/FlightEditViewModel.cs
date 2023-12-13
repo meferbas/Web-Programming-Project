@@ -2,9 +2,8 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 namespace AirlineSeatReservationSystem.Models
 {
-    public class FlightCreateViewModel
+    public class FlightEditViewModel
     {
-        [Key]
         public int FlightId { get; set; }
         [Required]
         [Display(Name = "From")]

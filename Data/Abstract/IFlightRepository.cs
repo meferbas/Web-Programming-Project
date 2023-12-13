@@ -6,5 +6,9 @@ namespace  AirlineSeatReservationSystem.Data.Abstract
         IQueryable<Flight> Flights {get;}
 
         void getFlight(Flight Flight);
+        void editFlight(Flight Flight);
+
+        Task DeleteFlight(Flight flight);
+
     }
 }

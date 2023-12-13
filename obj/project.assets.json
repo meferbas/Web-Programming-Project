@@ -1031,35 +1031,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Efe\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\secer\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Efe\\Desktop\\Web-Programming-main\\AirlineSeatReservationSystem.csproj",
+      "projectUniqueName": "C:\\Users\\secer\\OneDrive\\Masaüstü\\9294238244\\3-Güz\\Web Programlama\\Web_Programming\\AirlineSeatReservationSystem\\AirlineSeatReservationSystem.csproj",
       "projectName": "AirlineSeatReservationSystem",
-      "projectPath": "C:\\Users\\Efe\\Desktop\\Web-Programming-main\\AirlineSeatReservationSystem.csproj",
-      "packagesPath": "C:\\Users\\Efe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Efe\\Desktop\\Web-Programming-main\\obj\\",
+      "projectPath": "C:\\Users\\secer\\OneDrive\\Masaüstü\\9294238244\\3-Güz\\Web Programlama\\Web_Programming\\AirlineSeatReservationSystem\\AirlineSeatReservationSystem.csproj",
+      "packagesPath": "C:\\Users\\secer\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\secer\\OneDrive\\Masaüstü\\9294238244\\3-Güz\\Web Programlama\\Web_Programming\\AirlineSeatReservationSystem\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Efe\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\secer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

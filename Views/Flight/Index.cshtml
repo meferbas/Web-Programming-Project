@@ -14,7 +14,7 @@
   </head>
   <body>
     <div class="container">
-      <form action="/Flight/Index" method="post">
+      <form action="/Flight/SearchFlights" method="post">
         <div class="position-relative">
           <img
             src="~/img/Airplane.jpg"
@@ -77,7 +77,9 @@
                     class="form-select inp-height inp-width"
                     aria-label="Default select example"
                     asp-for="From"
+                    name="From"
                     id="from"
+                    
                   >
                     <option value="Ankara">Ankara</option>
                     <option value="Istanbul">Istanbul</option>
@@ -106,6 +108,7 @@
                     class="form-select inp-height inp-width"
                     aria-label="Default select example"
                     asp-for="To"
+                    name="To"
                     id="to">
                   
                     <option value="Ankara">Ankara</option>
@@ -120,34 +123,35 @@
                   <label for="" class="fw-bold fs-8">Depart</label>
                   <input
                     type="date"
-                    name=""
+                    name="Depart"
                     id=""
                     class="form-control inp-height"
-                    asp-for="Depart"
-                  />
+                    asp-for="Depart"/>
+                  
                 </div>
 
                 <div>
                   <label for="" class="fw-bold fs-8">Return</label>
                   <input
                     type="date"
-                    name=""
+                    name="Return"
                     id=""
                     class="form-control inp-height"
-                    asp-for="Return"
-                  />
+                    asp-for="Return"/>
+                  
                 </div>
 
                 <div>
                   <label for="" class="fw-bold fs-8">Guest</label>
                   <select
                     class="form-select inp-height inp-width"
+                    name="Guest"
                     aria-label="Default select example"
                     asp-for="Guest"
                   >
-                    <option selected value="" value="1">Adult</option>
-                    <option value="2">Child(2-12 age)</option>
-                    <option value="3">Infant(0-2 age)</option>
+                    <option value="Adult">Adult</option>
+                    <option value="Child(2-12 age)">Child(2-12 age)</option>
+                    <option value="Infant(0-2 age)">Infant(0-2 age)</option>
                   </select>
                 </div>
               </div>
