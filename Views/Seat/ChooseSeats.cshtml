@@ -1,0 +1,16 @@
+@model ChooseSeatsViewModel
+
+<form asp-action="ChooseSeats" method="post">
+    @foreach (var seat in Model.Seats)
+    {
+        <input type="radio" name="SelectedSeat" value="@seat.SeatId"
+               id="seat-@seat.SeatNumber"
+               @(seat.IsOccupied ? "disabled" : "") />
+        <label for="seat-@seat.SeatNumber">Koltuk @seat.SeatNumber</label>
+        @if (seat.IsOccupied)
+        {
+            <span class="text-danger">(Dolu)</span>
+        }
+    }
+    <button type="submit">Koltuk Seç</button>
+</form>

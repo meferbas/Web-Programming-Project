@@ -91,7 +91,7 @@ public class FlightController : Controller
                             && f.Guest == model.Guest)
                 .Select(flightEntity => new FlightCreateViewModel
                 {
-
+                    FlightId = flightEntity.FlightId,
                     From = flightEntity.From,
                     To = flightEntity.To,
                     Depart = flightEntity.Depart,
@@ -128,6 +128,8 @@ public class FlightController : Controller
 
         return View("SearchResults", flights);
     }
+
+
 
     [Authorize(Roles = "admin")]
     public IActionResult Edit(int? id)
