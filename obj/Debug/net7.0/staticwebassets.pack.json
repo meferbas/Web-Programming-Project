@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\css\\home.css"
     },
     {
+      "Id": "C:\\Users\\Efe\\Desktop\\WebProgrammingProject\\wwwroot\\css\\seat.css",
+      "PackagePath": "staticwebassets\\css\\seat.css"
+    },
+    {
       "Id": "C:\\Users\\Efe\\Desktop\\WebProgrammingProject\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -17,8 +21,16 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "C:\\Users\\Efe\\Desktop\\WebProgrammingProject\\wwwroot\\img\\Airplane.jpg",
-      "PackagePath": "staticwebassets\\img\\Airplane.jpg"
+      "Id": "C:\\Users\\Efe\\Desktop\\WebProgrammingProject\\wwwroot\\img\\Airplane.webp",
+      "PackagePath": "staticwebassets\\img\\Airplane.webp"
+    },
+    {
+      "Id": "C:\\Users\\Efe\\Desktop\\WebProgrammingProject\\wwwroot\\img\\seat.png",
+      "PackagePath": "staticwebassets\\img\\seat.png"
+    },
+    {
+      "Id": "C:\\Users\\Efe\\Desktop\\WebProgrammingProject\\wwwroot\\js\\seat.js",
+      "PackagePath": "staticwebassets\\js\\seat.js"
     },
     {
       "Id": "C:\\Users\\Efe\\Desktop\\WebProgrammingProject\\wwwroot\\js\\site.js",

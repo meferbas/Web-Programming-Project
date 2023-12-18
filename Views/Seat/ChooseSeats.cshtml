@@ -1,16 +1,51 @@
 @model ChooseSeatsViewModel
 
-<form asp-action="ChooseSeats" method="post">
-    @foreach (var seat in Model.Seats)
-    {
-        <input type="radio" name="SelectedSeat" value="@seat.SeatId"
-               id="seat-@seat.SeatNumber"
-               @(seat.IsOccupied ? "disabled" : "") />
-        <label for="seat-@seat.SeatNumber">Koltuk @seat.SeatNumber</label>
-        @if (seat.IsOccupied)
+<link rel="stylesheet" href="~/css/seat.css" asp-append-version="true" />
+<div class="container">
+
+    <form asp-action="ChooseSeats" method="post" class="seat-selection-form">
+    <div class="row">
+        @for (int i = 0; i < Model.Seats.Count; i++)
+
+
+
         {
-            <span class="text-danger">(Dolu)</span>
+            <div class="col-md-6 seat-container @(Model.Seats[i].IsOccupied ? "seat-occupied" : "")">
+                <!-- Koltuk seçimi için gizli radio button -->
+                <input type="radio" name="SelectedSeat" value="@Model.Seats[i].SeatId" id="seat-@Model.Seats[i].SeatNumber"
+                    class="seat-radio" @(Model.Seats[i].IsOccupied ? "disabled" : "") hidden />
+                <!-- Koltuk görseli ve numarası -->
+                <label for="seat-@Model.Seats[i].SeatNumber" class="seat-label">
+                    <img src="~/img/seat.png" alt="Seat" class="seat-icon" />
+                    @Model.Seats[i].SeatNumber
+                </label>
+                <!-- Dolu olduğunda gösterilecek metin -->
+                @if (Model.Seats[i].IsOccupied)
+
+
+
+                {
+                    <span class="text-danger">(Dolu)</span>
+                }
+            </div>
+            <!-- Her iki koltuk arasına boşluk ekleyin -->
+            if (i % 2 == 1)
+
+
+
+            {
+                @:<div class="w-100 seat-placeholder"></div>
+            }
+
+
+
         }
-    }
-    <button type="submit">Koltuk Seç</button>
+    </div>
+    <button type="submit" class="btn btn-primary">Koltuk Seç</button>
 </form>
+
+</div>
+
+
+
+<script src="~/js/seat.js" asp-append-version="true"></script>

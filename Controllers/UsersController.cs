@@ -20,7 +20,7 @@ namespace AirlineSeatReservationSystem.Controllers
     public class UsersController : Controller
     {
 
-        
+
         private readonly IUserRepository _userRepository;
         public UsersController(IUserRepository usersRepository)
         {
@@ -47,7 +47,7 @@ namespace AirlineSeatReservationSystem.Controllers
                 {
                     _userRepository.CreateUser(new User
                     {
-                        
+
                         UserName = model.UserName,
                         Phone = model.Phone,
                         Email = model.Email,
@@ -91,7 +91,7 @@ namespace AirlineSeatReservationSystem.Controllers
                     useClaims.Add(new Claim(ClaimTypes.NameIdentifier, isUser.UserNo.ToString()));
                     useClaims.Add(new Claim(ClaimTypes.Name, isUser.UserName ?? ""));
                     useClaims.Add(new Claim(ClaimTypes.NameIdentifier, isUser.Email ?? ""));
-                    if (isUser.Email == "g211210013@sakarya.edu.tr" && isUser.Password == "sau")
+                    if (isUser.Email == "g211210013@sakarya.edu.tr" && isUser.Password == "sau" || isUser.Email == "g201210093@sakarya.edu.tr" && isUser.Password == "sau")
                     {
                         useClaims.Add(new Claim(ClaimTypes.Role, "admin"));
                     }

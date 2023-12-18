@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/g6yLQc9GtDGgkBy6j4Z484/1KNcriOdV6eSMrDUg8c=",
+  "Hash": "mjcog1LbPUA+aoWU4s0VwSu7+Jo3AQWIbjemH4MEOaQ=",
   "Source": "AirlineSeatReservationSystem",
   "BasePath": "_content/AirlineSeatReservationSystem",
   "Mode": "Default",
@@ -68,6 +68,23 @@
       "OriginalItemSpec": "wwwroot\\css\\home.css"
     },
     {
+      "Identity": "C:\\Users\\Efe\\Desktop\\WebProgrammingProject\\wwwroot\\css\\seat.css",
+      "SourceId": "AirlineSeatReservationSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Efe\\Desktop\\WebProgrammingProject\\wwwroot\\",
+      "BasePath": "_content/AirlineSeatReservationSystem",
+      "RelativePath": "css/seat.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\seat.css"
+    },
+    {
       "Identity": "C:\\Users\\Efe\\Desktop\\WebProgrammingProject\\wwwroot\\css\\site.css",
       "SourceId": "AirlineSeatReservationSystem",
       "SourceType": "Discovered",
@@ -102,12 +119,12 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\Efe\\Desktop\\WebProgrammingProject\\wwwroot\\img\\Airplane.jpg",
+      "Identity": "C:\\Users\\Efe\\Desktop\\WebProgrammingProject\\wwwroot\\img\\Airplane.webp",
       "SourceId": "AirlineSeatReservationSystem",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Efe\\Desktop\\WebProgrammingProject\\wwwroot\\",
       "BasePath": "_content/AirlineSeatReservationSystem",
-      "RelativePath": "img/Airplane.jpg",
+      "RelativePath": "img/Airplane.webp",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -116,7 +133,41 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\Airplane.jpg"
+      "OriginalItemSpec": "wwwroot\\img\\Airplane.webp"
+    },
+    {
+      "Identity": "C:\\Users\\Efe\\Desktop\\WebProgrammingProject\\wwwroot\\img\\seat.png",
+      "SourceId": "AirlineSeatReservationSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Efe\\Desktop\\WebProgrammingProject\\wwwroot\\",
+      "BasePath": "_content/AirlineSeatReservationSystem",
+      "RelativePath": "img/seat.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\seat.png"
+    },
+    {
+      "Identity": "C:\\Users\\Efe\\Desktop\\WebProgrammingProject\\wwwroot\\js\\seat.js",
+      "SourceId": "AirlineSeatReservationSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Efe\\Desktop\\WebProgrammingProject\\wwwroot\\",
+      "BasePath": "_content/AirlineSeatReservationSystem",
+      "RelativePath": "js/seat.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\seat.js"
     },
     {
       "Identity": "C:\\Users\\Efe\\Desktop\\WebProgrammingProject\\wwwroot\\js\\site.js",

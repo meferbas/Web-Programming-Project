@@ -1,0 +1,71 @@
+.seat-selection-form {
+    max-width: 800px;
+    margin: auto;
+}
+
+.seat-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.seat-container img {
+    width: 50px;
+    height: auto;
+    margin-right: 5px;
+}
+
+.seat-container label {
+    white-space: nowrap;
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.seat-occupied,
+.seat-selected {
+    background-color: #f8d7da; /* Default background for occupied seats */
+    border: 1px solid #f5c6cb;
+}
+
+.seat-occupied img {
+    opacity: 0.5;
+}
+
+.seat-selected {
+    background-color: #90ee90; /* Light green background for selected seats */
+    border: 1px solid #28a745; /* Green border for selected seats */
+}
+
+.btn-primary {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.seat-radio {
+    display: none; /* Hide the radio buttons */
+}
+
+.seat-label {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* Boş yer tutucu için ekstra tanımlamalar */
+.seat-placeholder {
+    height: 1px;
+    visibility: hidden;
+}
+
+
+/* Ensure that the order is maintained for all seats */
+.seat-container {
+    order: 0;
+}

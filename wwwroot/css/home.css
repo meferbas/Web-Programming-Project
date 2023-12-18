@@ -20,3 +20,17 @@
 {
     width: 220px;
 }
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    /* Eğer görsel ana dizindeyse */
+    background-image: url('~/img/Airplane.webp');
+
+    /* Tam ekran görsel */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
