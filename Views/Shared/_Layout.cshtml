@@ -1,121 +1,120 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - AirlineSeatReservationSystem</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link
-      rel="stylesheet"
-      href="~/AirlineSeatReservationSystem.styles.css"
-      asp-append-version="true"
-    />
-  </head>
-  <body>
 
-    <header>
-      <nav class="navbar navbar-expand-lg bg-white shadow-sm">
-        <div class="container">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@ViewData["Title"] - AirlineSeatReservationSystem</title>
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+  <link rel="stylesheet" href="~/AirlineSeatReservationSystem.styles.css" asp-append-version="true" />
+</head>
+
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm" style="background-color: #e3f2fd;">
+
+      <div class="container-fluid">
+        <a class="navbar-brand" asp-controller="Flight" asp-action="Index">Airlines Website</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+          aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
           <ul class="navbar-nav ms-auto">
-           
+          @if (User.Identity!.IsAuthenticated)
 
-            @if(User.Identity!.IsAuthenticated) {
-              @if(User.IsInRole("admin"))
-              {
-                <li class="nav-item">
-                  <a class="nav-link" asp-controller="Flight" asp-action="ListFlights"
-                    >Admin</a >
-                 
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" asp-controller="Flight" asp-action="Index"
-                    >Home</a>
-                  
-                </li>
-                <li class="nav-item">
-                  <a href="" class="nav-link">@User.Identity.Name</a>
-                </li>
-                <li class="nav-item">
-                  <a href="/users/logout" class="nav-link">Logout</a>
-                </li>
-              }else{
-                
-                <li class="nav-item">
-                  <a class="nav-link" asp-controller="Flight" asp-action="Index"
-                    >Home</a>
-                  
-                </li>
-                <li class="nav-item">
-                  <a href="" class="nav-link">@User.Identity.Name</a>
-                </li>
-                <li class="nav-item">
-                  <a href="/users/logout" class="nav-link">Logout</a>
-                </li>
-              }
-              
-            
-            }else {
-            <li class="nav-item">
-              <a class="nav-link" asp-controller="Flight" asp-action="Index"
-                >Home</a>
-              
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" asp-controller="Users" asp-action="SignUp"
-                >Sign up</a>
-              
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" asp-controller="Users" asp-action="SignIn"
-                >Sign In</a>
-              
-            </li>
+          {
+            @if (User.IsInRole("admin"))
+
+            {
+              <li class="nav-item">
+                <a class="nav-link" asp-controller="Flight" asp-action="ListFlights">Admin</a>
+
+              </li>
+              <li class="nav-item">
+                <a class="nav-link  " asp-controller="Flight" asp-action="Index">Home</a>
+
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">@User.Identity.Name</a>
+              </li>
+              <li class="nav-item">
+                <a href="/users/logout" class="nav-link">Logout</a>
+              </li>
             }
 
+            else
+
+            {
+
+              <li class="nav-item">
+                <a class="nav-link" asp-controller="Flight" asp-action="Index">Home</a>
+
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">@User.Identity.Name</a>
+              </li>
+              <li class="nav-item">
+                <a href="/users/logout" class="nav-link">Logout</a>
+              </li>
+            }
+
+
+          }
+
+          else
+
+          {
             <li class="nav-item">
-              <select class="form-select" aria-label="Default select example">
-                <option selected value="" value="1">
-                  <a
-                    class="nav-link"
-                    language="english"
-                    asp-controller="Home"
-                    asp-action="Privacy"
-                    >TR</a>
-                  
-                </option>
-                <option value="2">
-                  <a
-                    class="nav-link"
-                    language="english"
-                    asp-controller="Home"
-                    asp-action="Privacy"
-                    >EN</a>
-                  
-                </option>
-                <option value="3">
-                  <a
-                    class="nav-link"
-                    language="english"
-                    asp-controller="Home"
-                    asp-action="Privacy"
-                    >FR</a>
-                  
-                </option>
-              </select>
+              <a class="nav-link" asp-controller="Flight" asp-action="Index">Home</a>
+
             </li>
-          </ul>
+            <li class="nav-item">
+              <a class="nav-link" asp-controller="Users" asp-action="SignUp">Sign up</a>
+
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" asp-controller="Users" asp-action="SignIn">Sign In</a>
+
+            </li>
+          }
+
+          <li class="nav-item">
+            <select class="form-select" aria-label="Default select example">
+              <option selected value="" value="1">
+                <a class="nav-link" language="english" asp-controller="Home" asp-action="Privacy">TR</a>
+
+              </option>
+              <option value="2">
+                <a class="nav-link" language="english" asp-controller="Home" asp-action="Privacy">EN</a>
+
+              </option>
+              <option value="3">
+                <a class="nav-link" language="english" asp-controller="Home" asp-action="Privacy">FR</a>
+
+              </option>
+            </select>
+          </li>
+        </ul>
         </div>
-      </nav>
-    </header>
+        
+      </div>
+      </div>
+    </nav>
+  </header>
 
-    <div class="container">
-      <main role="main" class="pb-3">@RenderBody()</main>
-    </div>
+  <div class="container">
+    <main role="main" class="pb-3">@RenderBody()</main>
+  </div>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-  </body>
+  <script src="~/lib/jquery/dist/jquery.min.js"></script>
+  <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="~/js/site.js" asp-append-version="true"></script>
+  @await RenderSectionAsync("Scripts", required: false)
+</body>
+
 </html>

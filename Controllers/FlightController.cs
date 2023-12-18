@@ -16,8 +16,10 @@ public class FlightController : Controller
     {
         _repository = repository;
     }
+
     public IActionResult Index()
     {
+        
         return View();
     }
 

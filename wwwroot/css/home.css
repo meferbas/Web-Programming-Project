@@ -1,5 +1,5 @@
 .bg-cp{
-    background-color: #d3d6db;
+    background-color: #a5c9ec;
 }
 .fs-7
 {
@@ -20,17 +20,16 @@
 {
     width: 220px;
 }
-body, html {
+html {
     height: 100%;
-    margin: 0;
+   
 }
 
 body {
-    /* Eğer görsel ana dizindeyse */
-    background-image: url('~/img/Airplane.webp');
-
-    /* Tam ekran görsel */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    margin: 0; /* Tarayıcı kenar boşluklarını kaldırır */
+    padding: 0; /* Tarayıcı paddinglerini kaldırır */
+    background: url('../img/Airplane.webp') no-repeat center center fixed; 
+    background-size: cover; /* Resmi kaplayacak şekilde boyutlandırır */
+    height: 100%;
 }
+

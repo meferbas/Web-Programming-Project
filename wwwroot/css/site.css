@@ -124,3 +124,6 @@ html {
 body {
   margin-bottom: 60px;
 }
+.bg-black {
+  background-color: black;
+}
