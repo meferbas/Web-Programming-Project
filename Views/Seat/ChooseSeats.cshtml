@@ -4,50 +4,67 @@
 <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
 
 <div class="container">
-
-    <form asp-action="ChooseSeats" method="post" class="seat-selection-form">
-    <div class="row">
-        @for (int i = 0; i < Model.Seats.Count; i++)
-
-
-
-        {
-            <div class="col-md-6 seat-container @(Model.Seats[i].IsOccupied ? "seat-occupied" : "")">
-                <!-- Koltuk seçimi için gizli radio button -->
-                <input type="radio" name="SelectedSeat" value="@Model.Seats[i].SeatId" id="seat-@Model.Seats[i].SeatNumber"
-                    class="seat-radio" @(Model.Seats[i].IsOccupied ? "disabled" : "") hidden />
-                <!-- Koltuk görseli ve numarası -->
-                <label for="seat-@Model.Seats[i].SeatNumber" class="seat-label">
-                    <img src="~/img/seat.png" alt="Seat" class="seat-icon" />
-                    @Model.Seats[i].SeatNumber
-                </label>
-                <!-- Dolu olduğunda gösterilecek metin -->
-                @if (Model.Seats[i].IsOccupied)
-
-
-
-                {
-                    <span class="text-danger">(Dolu)</span>
+    <form id="seatSelectionForm" asp-action="ChooseSeats" method="post" class="seat-selection-form">
+        <div class="row">
+            @for (int i = 0; i < Model.Seats.Count; i++) {
+                <div class="col-md-6 seat-container @(Model.Seats[i].IsOccupied ? "seat-occupied" : "")">
+                    <input type="radio" name="SelectedSeat" value="@Model.Seats[i].SeatId" id="seat-@Model.Seats[i].SeatNumber"
+                        class="seat-radio" @(Model.Seats[i].IsOccupied ? "disabled" : "") hidden />
+                    <label for="seat-@Model.Seats[i].SeatNumber" class="seat-label">
+                        <img src="~/img/seat.png" alt="Seat" class="seat-icon" />
+                        @Model.Seats[i].SeatNumber
+                    </label>
+                    @if (Model.Seats[i].IsOccupied) {
+                        <span class="text-danger">(Dolu)</span>
+                    }
+                </div>
+                if (i % 2 == 1) {
+                    @:<div class="w-100 seat-placeholder"></div>
                 }
-            </div>
-            <!-- Her iki koltuk arasına boşluk ekleyin -->
-            if (i % 2 == 1)
-
-
-
-            {
-                @:<div class="w-100 seat-placeholder"></div>
             }
-
-
-
-        }
-    </div>
-    <button type="submit" class="btn btn-primary">Koltuk Seç</button>
-</form>
-
+        </div>
+        <button type="submit" class="btn btn-primary">Koltuk Seç</button>
+    </form>
 </div>
 
+<script>
+    $(document).ready(function() {
+    // Form submit olayını yakala
+    $('#seatSelectionForm').on('submit', function(e) {
+        e.preventDefault(); // Formun normal submit işlemini engelle
 
+        // Seçili koltuk ID'sini al
+        var selectedSeatId = $('input[name="SelectedSeat"]:checked').val();
+        var flightId = '@Model.FlightId'; // Modelden gelen flight ID'si
+
+        // AJAX isteği ile koltuk rezervasyonunu yap
+        bookSeat(flightId, selectedSeatId);
+    });
+});
+
+function bookSeat(flightId, seatId) {
+    // AJAX isteği ile sunucuya rezervasyon isteği gönder
+    $.ajax({
+        url: '/Users/BookSeat', // Değiştirilen metod adı
+        type: 'GET',
+        data: JSON.stringify({ flightId: flightId, seatId: seatId }),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        success: function(response) {
+            if(response.success) {
+                alert('Seat booked successfully!');
+                // Sayfayı yenile veya kullanıcıyı başka bir sayfaya yönlendir
+            } else {
+                alert('Error: ' + response.message);
+            }
+        },
+        error: function(xhr, status, error) {
+            alert('An error occurred: ' + xhr.responseText);
+        }
+    });
+}
+
+
+</script>
 
 <script src="~/js/seat.js" asp-append-version="true"></script>

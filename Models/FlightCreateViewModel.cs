@@ -15,7 +15,7 @@ namespace AirlineSeatReservationSystem.Models
         [Required]
         [Display(Name = "Depart")]
         public string? Depart { get; set; }
-        [Required]
+        
         [Display(Name = "Return")]
         public string? Return { get; set; }
 

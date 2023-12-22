@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mjcog1LbPUA+aoWU4s0VwSu7+Jo3AQWIbjemH4MEOaQ=",
+  "Hash": "2Oh1YrAGQmbOhe0MOSjUkHgKPBye696cZINMPzTnRp4=",
   "Source": "AirlineSeatReservationSystem",
   "BasePath": "_content/AirlineSeatReservationSystem",
   "Mode": "Default",
@@ -117,6 +117,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\Efe\\Desktop\\WebProgrammingProject\\wwwroot\\img\\Airplane.jpg",
+      "SourceId": "AirlineSeatReservationSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Efe\\Desktop\\WebProgrammingProject\\wwwroot\\",
+      "BasePath": "_content/AirlineSeatReservationSystem",
+      "RelativePath": "img/Airplane.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Airplane.jpg"
     },
     {
       "Identity": "C:\\Users\\Efe\\Desktop\\WebProgrammingProject\\wwwroot\\img\\Airplane.webp",

@@ -14,6 +14,8 @@ namespace AirlineSeatReservationSystem.Data.Concrete.Efcore
         public DbSet<Flight> Flights => Set<Flight>();
         public DbSet<Seat> Seats => Set<Seat>();
 
+        public DbSet<Booking> Bookings => Set<Booking>();
+
         
 
         

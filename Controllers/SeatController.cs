@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
 
 
 namespace AirlineSeatReservationSystem.Controllers
@@ -20,15 +21,18 @@ namespace AirlineSeatReservationSystem.Controllers
     public class SeatController : Controller
     {
         private readonly ISeatRepository _seatRepository;
+        private readonly IBookingRepository _bookingRepository;
         private IFlightRepository _repository;
 
         private readonly DataContext _context;
-        public SeatController(ISeatRepository seatRepository, DataContext context, IFlightRepository repository)
+        public SeatController(ISeatRepository seatRepository, DataContext context, IFlightRepository repository, IBookingRepository bookingRepository)
         {
+            _bookingRepository = bookingRepository;
             _seatRepository = seatRepository;
             _context = context;
             _repository = repository;
         }
+
         public IActionResult ChooseSeats(int flightId)
         {
             var flightExists = _context.Flights.Any(f => f.FlightId == flightId);
@@ -38,10 +42,7 @@ namespace AirlineSeatReservationSystem.Controllers
                 return NotFound(flightId);
             }
 
-            var seats = _context.Seats
-                       .Where(s => s.FlightId == flightId)
-                       .OrderBy(s => s.SeatId) // Bu satırı ekleyin
-                       .ToList();
+            var seats = _context.Seats.Where(s => s.FlightId == flightId).ToList();
             // Eğer hiç koltuk yoksa, varsayılan olarak 20 koltuk oluşturun ve veritabanına ekleyin
             if (!seats.Any())
             {
@@ -71,7 +72,6 @@ namespace AirlineSeatReservationSystem.Controllers
 
 
         [HttpPost]
-
         public async Task<IActionResult> ChooseSeats(ChooseSeatsViewModel model)
         {
             await _seatRepository.ReserveSeat(model.SelectedSeat);
@@ -79,12 +79,38 @@ namespace AirlineSeatReservationSystem.Controllers
             TempData["SuccessMessage"] = "Uçuşunuz başarılı bir şekilde oluşturuldu.";
             return RedirectToAction("Index", "Flight"); // Ana sayfaya yönlendir
         }
+        // [HttpPost]
+        // public async Task<IActionResult> ChooseSeats(ChooseSeatsViewModel model)
+        // {
+
+
+        //     var userIdClaim = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
+
+
+        //     var userNo = int.Parse(userIdClaim.Value);
+        //     var selectedSeatId = model.SelectedSeat;
+
+        //     // Uçuşun varlığını kontrol et
+
+
+        //     // Koltuk rezervasyonunu denetle
 
 
 
+        //     // Yeni rezervasyonu oluştur ve kaydet
+        //     var booking = new Booking
+        //     {
+        //         SeatId = selectedSeatId,
+        //         BookingDate = DateTime.UtcNow
+        //     };
 
+        //     _bookingRepository.Add(booking);
+        //     _bookingRepository.SaveChanges();
+        //     await _seatRepository.ReserveSeat(selectedSeatId);
 
-
+        //     TempData["SuccessMessage"] = "Uçuşunuz başarılı bir şekilde oluşturuldu.";
+        //     return RedirectToAction("Index", "Flight");
+        // }
 
 
 

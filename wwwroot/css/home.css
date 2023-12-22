@@ -10,7 +10,7 @@
 }
 .inp-width
 {
-    width: 240px;
+    width: 170px;
 }
 .inp-height
 {
@@ -32,4 +32,26 @@ body {
     background-size: cover; /* Resmi kaplayacak şekilde boyutlandırır */
     height: 100%;
 }
-
+/* Yeni swap butonu için stil */
+.swap-button {
+    position: absolute; /* Butonu pozisyonlamak için absolute kullanın */
+    top: 50%; /* Butonu kutunun ortasına yerleştir */
+    right: -30px; /* Butonu kutuların dışına taşıyın */
+    transform: translateY(-50%); /* Butonu dikey olarak ortala */
+  }
+  
+  @media (max-width: 768px) {
+    .swap-button {
+      position: static;
+      transform: none;
+      top: auto;
+      right: auto;
+      margin-top: 10px; /* Mobil görünümde butonu aşağıya taşı */
+    }
+    /* Mobil görünümde form elemanlarını düzenleyin */
+    .form-row .col-md-2 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+  

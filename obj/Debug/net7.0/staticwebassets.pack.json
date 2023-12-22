@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Efe\\Desktop\\WebProgrammingProject\\wwwroot\\img\\Airplane.jpg",
+      "PackagePath": "staticwebassets\\img\\Airplane.jpg"
+    },
+    {
       "Id": "C:\\Users\\Efe\\Desktop\\WebProgrammingProject\\wwwroot\\img\\Airplane.webp",
       "PackagePath": "staticwebassets\\img\\Airplane.webp"
     },

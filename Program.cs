@@ -22,6 +22,8 @@ builder.Services.AddDbContext<DataContext>(options =>
 
 builder.Services.AddScoped<IUserRepository, EfUserRepository>(); // yeni geldi
 builder.Services.AddScoped<ISeatRepository, EfSeatRepository>();
+builder.Services.AddScoped<IBookingRepository, EfBookingRepository>();
+
 
 // builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options=>{
 //     options.LoginPath="/Users/SignUp";

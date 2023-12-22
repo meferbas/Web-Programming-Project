@@ -1,97 +1,101 @@
-<!-- SearchResults.cshtml -->
 @model IEnumerable<AirlineSeatReservationSystem.Models.FlightCreateViewModel>
-<link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
-
-@if (User.IsInRole("admin"))
-{
-  <div class="row">
-    <div class="col-12 py-5">
-      
-      <br>
-      <a href="/Flight/Create" class="btn btn-warning ">New Flight</a>
-      <br>
-      <table class="table table-bordered table-dark ">
-        <thead>
-          <tr>
-            <th>From</th>
-            <th>To</th>
-            <th>Time</th>
-            <th> Seat</th>
-          </tr>
-        </thead>
-        <tbody>
-          @if (!Model.Any())
-          {
-            <p>No flights found.</p>
-          }
-          else
-          {
-            foreach (var flight in Model)
+  <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+  
+  @if (User.IsInRole("admin"))
+  {
+    <div class="row">
+      <div class="col-12 py-5">
+        
+        <br>
+        <a href="/Flight/Create" class="btn btn-warning ">New Flight</a>
+        <br>
+        <table class="table table-bordered table-dark ">
+          <thead>
+            <tr>
+              <th>From</th>
+              <th>To</th>
+              <th>Time</th>
+              <th> Seat</th>
+            </tr>
+          </thead>
+          <tbody>
+            @if (!Model.Any())
             {
-              <tr>
-
-                <td>@flight.From</td>
-                <td>@flight.To</td>
-                <td>@flight.Time</td>
-                <td>
-                  <a href="/Flight/Edit/@flight.FlightId" class="btn btn-sm btn-primary">Edit</a>
-                  <form asp-action="Delete" method="post" onsubmit="return confirm('emin misiniz?')"
-                    style="display: inline-block">
-                    <input type="hidden" name="FlightId" value="@flight.FlightId" />
-                    <button type="submit" class="btn btn-danger btn-sm">
-                      Delete
-                    </button>
-                  </form>
-                  <!-- <a href="/Flight/Delete/@flight.FlightId" class="btn btn-sm btn-danger">Delete</a> -->
-                </td>
-              </tr>
+              <p>No flights found.</p>
             }
-          }
-        </tbody>
-      </table>
-    </div>
-  </div>
-}
-else
-{
-  <div class="row">
-    <div class="col-12 py-5">
-      <table class="table table-bordered table-dark">
-        <thead>
-          <tr>
-            <th>From</th>
-            <th>To</th>
-            <th>Time</th>
-            <th> Seat</th>
-          </tr>
-        </thead>
-        <tbody>
-          @if (!Model.Any())
-          {
-            <p>No flights found.</p>
-          }
-          else
-          {
-            foreach (var flight in Model)
+            else
             {
-              <tr>
-
-                <td>@flight.From</td>
-                <td>@flight.To</td>
-                <td>@flight.Time</td>
-                <td>
-
-
-                  <a href="@Url.Action("ChooseSeats", "Seat", new { flightId = flight.FlightId })"
-                    class="btn btn-sm btn-primary">Choose Seat</a>
-
-                </td>
-              </tr>
+              foreach (var flight in Model)
+              {
+                <tr>
+  
+                  <td>@flight.From</td>
+                  <td>@flight.To</td>
+                  <td>@flight.Time</td>
+                  <td>
+                    <a href="/Flight/Edit/@flight.FlightId" class="btn btn-sm btn-primary">Edit</a>
+                    <form asp-action="Delete" method="post" onsubmit="return confirm('emin misiniz?')"
+                      style="display: inline-block">
+                      <input type="hidden" name="FlightId" value="@flight.FlightId" />
+                      <button type="submit" class="btn btn-danger btn-sm">
+                        Delete
+                      </button>
+                    </form>
+                    <!-- <a href="/Flight/Delete/@flight.FlightId" class="btn btn-sm btn-danger">Delete</a> -->
+                  </td>
+                </tr>
+              }
             }
-          }
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
+  }
+  else
+  {
+    <div class="row">
+      <div class="col-12 py-5">
+        <table class="table table-bordered table-dark">
+          <thead>
+            <tr>
+              <th>From</th>
+              <th>To</th>
+              <th>Time</th>
+              <th> Seat</th>
+            </tr>
+          </thead>
+          <tbody>
+            @if (!Model.Any())
+            {
+              <p>No flights found.</p>
+            }
+            else
+            {
+              foreach (var flight in Model)
+              {
+                <tr>
+  
+                  <td>@flight.From</td>
+                  <td>@flight.To</td>
+                  <td>@flight.Time</td>
+                  <td>
+  
+  
+                    <a href="@Url.Action("ChooseSeats", "Seat", new { flightId = flight.FlightId })"
+                      class="btn btn-sm btn-primary">Choose Seat</a>
+  
+                  </td>
+                </tr>
+              }
+            }
+          </tbody>
 
-}
+          
+        </table>
+      </div>
+    </div>
+  
+  }
+
+  
+  

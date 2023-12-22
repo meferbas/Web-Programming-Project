@@ -16,10 +16,8 @@ public class FlightController : Controller
     {
         _repository = repository;
     }
-
     public IActionResult Index()
     {
-        
         return View();
     }
 
@@ -43,6 +41,8 @@ public class FlightController : Controller
 
                 return RedirectToAction("SignIn");
             }
+
+            
 
 
         }
@@ -80,36 +80,89 @@ public class FlightController : Controller
         return View();
     }
 
-
-    public async Task<IActionResult> SearchFlights(FlightViewModel model)
+   [Authorize]
+public async Task<IActionResult> SearchFlights(FlightViewModel model)
+{
+  
+    if (ModelState.IsValid )
     {
+        
+        var query = _repository.Flights.AsQueryable();
 
-        if (ModelState.IsValid)
+        // Ortak kriterler
+        query = query.Where(f => f.From == model.From && f.To == model.To && f.Guest == model.Guest);
+
+        // One Way ise Return tarihini dikkate alma.
+        if (model.IsOneWay)
         {
-            var errors = ModelState.Values.SelectMany(v => v.Errors);
-            var flights = await _repository.Flights
-                .Where(f => f.From == model.From && f.To == model.To
-                            && f.Depart == model.Depart && f.Return == model.Return
-                            && f.Guest == model.Guest)
-                .Select(flightEntity => new FlightCreateViewModel
-                {
-                    FlightId = flightEntity.FlightId,
-                    From = flightEntity.From,
-                    To = flightEntity.To,
-                    Depart = flightEntity.Depart,
-                    Return = flightEntity.Return,
-                    Time = flightEntity.Time,
-
-                    Guest = flightEntity.Guest,
-
-                })
-                .ToListAsync();
-
-            return View("SearchResults", flights);
+            query = query.Where(f => f.Depart == model.Depart);
+        }
+        else
+        {
+            // Return seçeneği varsa ve tarih belirtilmişse
+            query = query.Where(f => f.Depart == model.Depart);
+            if (!string.IsNullOrEmpty(model.Return))
+            {
+                query = query.Where(f => f.Return == model.Return);
+            }
         }
 
-        return View("Index", model);
+        var flights = await query.Select(flightEntity => new FlightCreateViewModel
+        {
+            FlightId = flightEntity.FlightId,
+            From = flightEntity.From,
+            To = flightEntity.To,
+            Depart = flightEntity.Depart,
+            Return = flightEntity.Return , // Eğer null ise boş string atayabilirsiniz
+            Time = flightEntity.Time,
+            Guest = flightEntity.Guest,
+
+        }).ToListAsync();
+        
+
+        return View("SearchResults", flights);
     }
+    if(!ModelState.IsValid){
+        var query = _repository.Flights.AsQueryable();
+
+        // Ortak kriterler
+        query = query.Where(f => f.From == model.From && f.To == model.To && f.Guest == model.Guest &&f.Return==null);
+
+        // One Way ise Return tarihini dikkate alma.
+        if (model.IsOneWay)
+        {
+            query = query.Where(f => f.Depart == model.Depart);
+        }
+        else
+        {
+            // Return seçeneği varsa ve tarih belirtilmişse
+            query = query.Where(f => f.Depart == model.Depart);
+            if (!string.IsNullOrEmpty(model.Return))
+            {
+                query = query.Where(f => f.Return == model.Return);
+            }
+        }
+
+        var flights = await query.Select(flightEntity => new FlightCreateViewModel
+        {
+            FlightId = flightEntity.FlightId,
+            From = flightEntity.From,
+            To = flightEntity.To,
+            Depart = flightEntity.Depart,
+            Return = flightEntity.Return , // Eğer null ise boş string atayabilirsiniz
+            Time = flightEntity.Time,
+            Guest = flightEntity.Guest,
+
+        }).ToListAsync();
+
+        return View("SearchResults", flights);
+
+    }
+
+    return View("Index", model);
+}
+
+
 
 
 

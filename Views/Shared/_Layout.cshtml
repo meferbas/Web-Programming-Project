@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -34,10 +34,10 @@
                 <a class="nav-link" asp-controller="Flight" asp-action="ListFlights">Admin</a>
 
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link  " asp-controller="Flight" asp-action="Index">Home</a>
 
-              </li>
+              </li> -->
               <li class="nav-item">
                 <a href="" class="nav-link">@User.Identity.Name</a>
               </li>
@@ -51,7 +51,7 @@
             {
 
               <li class="nav-item">
-                <a class="nav-link" asp-controller="Flight" asp-action="Index">Home</a>
+                <a class="nav-link" asp-controller="Users" asp-action="BookSeat">Flights</a>
 
               </li>
               <li class="nav-item">
