@@ -1,6 +1,9 @@
 ﻿@model FlightViewModel
 
+
 @if (TempData["SuccessMessage"] != null)
+
+
 
 {
   <div class="alert alert-success">
@@ -10,14 +13,16 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" /> 
+  <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
   <title>Ana Sayfa</title>
 </head>
+
 <body>
   <div class="container-fluid">
     <form action="/Flight/SearchFlights" method="post">
@@ -30,21 +35,23 @@
             <!-- Radyo butonları -->
             <div class="row mb-3 ">
               <input type="hidden" id="IsOneWay" name="IsOneWay" value="false" />
-                <div class="col-auto form-check">
-                  <input type="radio" class="form-check-input" name="flexRadioDefault" id="flexRadioDefault1"  onclick="toggleReturnDate(false)" checked/>
-                  <label for="flexRadioDefault1" class="form-check-label fw-bold fs-7">Return</label>
-                </div>
-              
-              
-                <div class="col-auto form-check">
-                  <input type="radio" class="form-check-input" name="flexRadioDefault" id="flexRadioDefault2" onclick="toggleReturnDate(true)" />
-                  <label for="flexRadioDefault2" class="form-check-label fw-bold fs-7">One Way</label>
-                </div>
+              <div class="col-auto form-check">
+                <input type="radio" class="form-check-input" name="flexRadioDefault" id="flexRadioDefault1"
+                  onclick="toggleReturnDate(false)" checked />
+                <label for="flexRadioDefault1" class="form-check-label fw-bold fs-7">@_localization.Getkey("Round Trip").Value</label>
+              </div>
+
+
+              <div class="col-auto form-check">
+                <input type="radio" class="form-check-input" name="flexRadioDefault" id="flexRadioDefault2"
+                  onclick="toggleReturnDate(true)" />
+                <label for="flexRadioDefault2" class="form-check-label fw-bold fs-7">@_localization.Getkey("One Way").Value</label>
+              </div>
             </div>
 
             <div class="row ">
               <div class="col-md-2">
-                <label asp-for="From" class="form-label fw-bold fs-8 m-0">From</label>
+                <h1 asp-for="From" class="form-label fw-bold fs-8 m-0">@_localization.Getkey("From").Value</h1>
 
 
                 <select class="form-select inp-height inp-width" aria-label="Default select example" asp-for="From"
@@ -54,18 +61,19 @@
                   <option value="Denizli">Denizli</option>
                   <option value="Kırşehir">Kırşehir</option>
                 </select>
-                 
+
               </div>
 
               <div class="col-auto ">
-                <button class="btn btn-white p-2 mt-4 " id="swapButton" onclick="swapValues()">
+                <button type="button" class="btn btn-white p-2 mt-4" id="swapButton" onclick="swapValues()">
                   <i class="fa-solid fa-arrow-right-arrow-left"></i>
                 </button>
-              </div> 
+              </div>
 
 
               <div class="col-md">
-                <label asp-for="To" class="form-label fw-bold fs-8 m-0">To</label>
+                <h1 asp-for="From" class="form-label fw-bold fs-8 m-0">@_localization.Getkey("To").Value</h1>
+
 
                 <select class="form-select inp-height inp-width" aria-label="Default select example" asp-for="To"
                   name="To" id="to">
@@ -79,19 +87,21 @@
               </div>
 
               <div class="col-md ">
-                <label asp-for="Depart" class="fw-bold fs-8">Depart</label>
-                <input type="date" name="Depart" id="deparDate" class="form-control inp-height inp-width" asp-for="Depart" />
+                <label asp-for="Depart" class="fw-bold fs-8">@_localization.Getkey("Depart").Value</label>
+                <input type="date" name="Depart" id="deparDate" class="form-control inp-height inp-width"
+                  asp-for="Depart" />
 
               </div>
 
               <div class="col-md">
-                <label asp-for="Return" class="fw-bold fs-8">Return</label>
-                <input type="date" name="Return" id="returnDate" class="form-control inp-height inp-width" asp-for="Return" />
+                <label asp-for="Return" class="fw-bold fs-8">@_localization.Getkey("Return").Value</label>
+                <input type="date" name="Return" id="returnDate" class="form-control inp-height inp-width"
+                  asp-for="Return" />
 
               </div>
 
               <div class="col-md">
-                <label asp-for="Guest" class="fw-bold fs-8">Guest</label>
+                <label asp-for="Guest" class="fw-bold fs-8">@_localization.Getkey("Guest").Value</label>
                 <select class="form-select inp-height inp-width" name="Guest" aria-label="Default select example"
                   asp-for="Guest">
                   <option value="Adult">Adult</option>
@@ -104,13 +114,13 @@
                   <button type="submit" class="btn btn-danger fw-bold fs-8">
                     Search Flights
                   </button>
-                  
+
                 </div>
               </div>
-              
+
+            </div>
           </div>
         </div>
-      </div>
     </form>
   </div>
 
@@ -125,26 +135,27 @@
 
     // Return tarih seçiminin devre dışı bırakılmasını veya etkinleştirilmesini kontrol eden fonksiyon
     function toggleReturnDate(isOneWay) {
-  var returnDateInput = document.getElementById('returnDate');
-  var isOneWayInput = document.getElementById('IsOneWay');
+      var returnDateInput = document.getElementById('returnDate');
+      var isOneWayInput = document.getElementById('IsOneWay');
 
-  // Return tarihini devre dışı bırak veya etkinleştir
-  returnDateInput.disabled = isOneWay;
+      // Return tarihini devre dışı bırak veya etkinleştir
+      returnDateInput.disabled = isOneWay;
 
-  // Hidden input alanını güncelle
-  isOneWayInput.value = isOneWay.toString();
+      // Hidden input alanını güncelle
+      isOneWayInput.value = isOneWay.toString();
 
-  // One Way seçiliyse Return tarihini temizle
-  if (isOneWay) {
-    returnDateInput.value = '';
-  }
-}
+      // One Way seçiliyse Return tarihini temizle
+      if (isOneWay) {
+        returnDateInput.value = '';
+      }
+    }
 
-  </script> 
+  </script>
 
-      
 
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
+
+  <script src="~/lib/jquery/dist/jquery.min.js"></script>
+  <script src="~/js/site.js" asp-append-version="true"></script>
 </body>
+
 </html>

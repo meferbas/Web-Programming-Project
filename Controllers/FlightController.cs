@@ -6,19 +6,49 @@ using AirlineSeatReservationSystem.Data.Abstract;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Localization;
+using System.Net;
+using AirlineSeatReservationSystem.Services;
 
 namespace AirlineSeatReservationSystem.Controllers;
 
 public class FlightController : Controller
 {
     private IFlightRepository _repository;
-    public FlightController(IFlightRepository repository)
+
+    private readonly ILogger<FlightController> _logger;
+    private readonly LanguageService _localization;
+    public FlightController(IFlightRepository repository, ILogger<FlightController> logger, LanguageService localization)
     {
         _repository = repository;
+        _logger = logger;
+        _localization = localization;
     }
     public IActionResult Index()
     {
+        ViewBag.From = _localization.Getkey("From").Value;
+        ViewBag.To = _localization.Getkey("To").Value;
+        ViewBag.Depart = _localization.Getkey("Depart").Value;
+        ViewBag.Return = _localization.Getkey("Return").Value;
+        ViewBag.Guest = _localization.Getkey("Guest").Value;
+        ViewBag.Round = _localization.Getkey("Round Trip").Value;
+        ViewBag.One = _localization.Getkey("One Way").Value;
+
+
+
+        var currentCulture = Thread.CurrentThread.CurrentCulture.Name;
         return View();
+    }
+
+    public IActionResult ChangeLanguage(string culture)
+    {
+        Response.Cookies.Append(CookieRequestCultureProvider.DefaultCookieName, CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+        new CookieOptions()
+        {
+            Expires = DateTimeOffset.UtcNow.AddYears(1)
+
+        });
+        return Redirect(Request.Headers["Referer"].ToString());
     }
 
     [HttpPost]
@@ -42,7 +72,7 @@ public class FlightController : Controller
                 return RedirectToAction("SignIn");
             }
 
-            
+
 
 
         }
@@ -80,87 +110,88 @@ public class FlightController : Controller
         return View();
     }
 
-   [Authorize]
-public async Task<IActionResult> SearchFlights(FlightViewModel model)
-{
-  
-    if (ModelState.IsValid )
+    [Authorize]
+    public async Task<IActionResult> SearchFlights(FlightViewModel model)
     {
-        
-        var query = _repository.Flights.AsQueryable();
 
-        // Ortak kriterler
-        query = query.Where(f => f.From == model.From && f.To == model.To && f.Guest == model.Guest);
+        if (ModelState.IsValid)
+        {
 
-        // One Way ise Return tarihini dikkate alma.
-        if (model.IsOneWay)
-        {
-            query = query.Where(f => f.Depart == model.Depart);
-        }
-        else
-        {
-            // Return seçeneği varsa ve tarih belirtilmişse
-            query = query.Where(f => f.Depart == model.Depart);
-            if (!string.IsNullOrEmpty(model.Return))
+            var query = _repository.Flights.AsQueryable();
+
+            // Ortak kriterler
+            query = query.Where(f => f.From == model.From && f.To == model.To && f.Guest == model.Guest);
+
+            // One Way ise Return tarihini dikkate alma.
+            if (model.IsOneWay)
             {
-                query = query.Where(f => f.Return == model.Return);
+                query = query.Where(f => f.Depart == model.Depart);
             }
-        }
-
-        var flights = await query.Select(flightEntity => new FlightCreateViewModel
-        {
-            FlightId = flightEntity.FlightId,
-            From = flightEntity.From,
-            To = flightEntity.To,
-            Depart = flightEntity.Depart,
-            Return = flightEntity.Return , // Eğer null ise boş string atayabilirsiniz
-            Time = flightEntity.Time,
-            Guest = flightEntity.Guest,
-
-        }).ToListAsync();
-        
-
-        return View("SearchResults", flights);
-    }
-    if(!ModelState.IsValid){
-        var query = _repository.Flights.AsQueryable();
-
-        // Ortak kriterler
-        query = query.Where(f => f.From == model.From && f.To == model.To && f.Guest == model.Guest &&f.Return==null);
-
-        // One Way ise Return tarihini dikkate alma.
-        if (model.IsOneWay)
-        {
-            query = query.Where(f => f.Depart == model.Depart);
-        }
-        else
-        {
-            // Return seçeneği varsa ve tarih belirtilmişse
-            query = query.Where(f => f.Depart == model.Depart);
-            if (!string.IsNullOrEmpty(model.Return))
+            else
             {
-                query = query.Where(f => f.Return == model.Return);
+                // Return seçeneği varsa ve tarih belirtilmişse
+                query = query.Where(f => f.Depart == model.Depart);
+                if (!string.IsNullOrEmpty(model.Return))
+                {
+                    query = query.Where(f => f.Return == model.Return);
+                }
             }
+
+            var flights = await query.Select(flightEntity => new FlightCreateViewModel
+            {
+                FlightId = flightEntity.FlightId,
+                From = flightEntity.From,
+                To = flightEntity.To,
+                Depart = flightEntity.Depart,
+                Return = flightEntity.Return, // Eğer null ise boş string atayabilirsiniz
+                Time = flightEntity.Time,
+                Guest = flightEntity.Guest,
+
+            }).ToListAsync();
+
+
+            return View("SearchResults", flights);
+        }
+        if (!ModelState.IsValid)
+        {
+            var query = _repository.Flights.AsQueryable();
+
+            // Ortak kriterler
+            query = query.Where(f => f.From == model.From && f.To == model.To && f.Guest == model.Guest && f.Return == null);
+
+            // One Way ise Return tarihini dikkate alma.
+            if (model.IsOneWay)
+            {
+                query = query.Where(f => f.Depart == model.Depart);
+            }
+            else
+            {
+                // Return seçeneği varsa ve tarih belirtilmişse
+                query = query.Where(f => f.Depart == model.Depart);
+                if (!string.IsNullOrEmpty(model.Return))
+                {
+                    query = query.Where(f => f.Return == model.Return);
+                }
+            }
+
+            var flights = await query.Select(flightEntity => new FlightCreateViewModel
+            {
+                FlightId = flightEntity.FlightId,
+                From = flightEntity.From,
+                To = flightEntity.To,
+                Depart = flightEntity.Depart,
+                Return = flightEntity.Return, // Eğer null ise boş string atayabilirsiniz
+                Time = flightEntity.Time,
+                Guest = flightEntity.Guest,
+
+            }).ToListAsync();
+
+            return View("SearchResults", flights);
+
         }
 
-        var flights = await query.Select(flightEntity => new FlightCreateViewModel
-        {
-            FlightId = flightEntity.FlightId,
-            From = flightEntity.From,
-            To = flightEntity.To,
-            Depart = flightEntity.Depart,
-            Return = flightEntity.Return , // Eğer null ise boş string atayabilirsiniz
-            Time = flightEntity.Time,
-            Guest = flightEntity.Guest,
-
-        }).ToListAsync();
-
-        return View("SearchResults", flights);
-
+        return View("Index", model);
     }
-
-    return View("Index", model);
-}
 
 
 

@@ -14,6 +14,14 @@
         },
         "runtime": {
           "AirlineSeatReservationSystem.dll": {}
+        },
+        "resources": {
+          "en-US/AirlineSeatReservationSystem.resources.dll": {
+            "locale": "en-US"
+          },
+          "tr-TR/AirlineSeatReservationSystem.resources.dll": {
+            "locale": "tr-TR"
+          }
         }
       },
       "Humanizer.Core/2.14.1": {

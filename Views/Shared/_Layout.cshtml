@@ -13,6 +13,8 @@
 <body>
 
   <header>
+
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm" style="background-color: #e3f2fd;">
 
       <div class="container-fluid">
@@ -24,83 +26,96 @@
 
         <div class="collapse navbar-collapse" id="navbarColor01">
           <ul class="navbar-nav ms-auto">
-          @if (User.Identity!.IsAuthenticated)
+            @if (User.Identity!.IsAuthenticated)
 
-          {
-            @if (User.IsInRole("admin"))
+
 
             {
-              <li class="nav-item">
-                <a class="nav-link" asp-controller="Flight" asp-action="ListFlights">Admin</a>
+              @if (User.IsInRole("admin"))
 
-              </li>
-              <!-- <li class="nav-item">
-                <a class="nav-link  " asp-controller="Flight" asp-action="Index">Home</a>
 
-              </li> -->
-              <li class="nav-item">
-                <a href="" class="nav-link">@User.Identity.Name</a>
-              </li>
-              <li class="nav-item">
-                <a href="/users/logout" class="nav-link">Logout</a>
-              </li>
+
+              {
+                <li class="nav-item">
+                  <a class="nav-link" asp-controller="Flight" asp-action="ListFlights">Admin</a>
+
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link  " asp-controller="Flight" asp-action="Index">Home</a>
+
+                  </li> -->
+                <li class="nav-item">
+                  <a href="" class="nav-link">@User.Identity.Name</a>
+                </li>
+                <li class="nav-item">
+                  <a href="/users/logout" class="nav-link">Logout</a>
+                </li>
+              }
+
+
+
+              else
+
+
+
+              {
+
+                <li class="nav-item">
+                  <a class="nav-link" asp-controller="Booking" asp-action="MyBookings">Flights</a>
+
+                </li>
+                <li class="nav-item">
+                  <a href="" class="nav-link">@User.Identity.Name</a>
+                </li>
+                <li class="nav-item">
+                  <a href="/users/logout" class="nav-link">Logout</a>
+                </li>
+              }
+
+
             }
+
+
 
             else
 
+
+
             {
-
               <li class="nav-item">
-                <a class="nav-link" asp-controller="Booking" asp-action="MyBookings">Flights</a>
+                <a class="nav-link" asp-controller="Flight" asp-action="Index">Home</a>
 
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">@User.Identity.Name</a>
+                <a class="nav-link" asp-controller="Users" asp-action="SignUp">Sign up</a>
+
               </li>
               <li class="nav-item">
-                <a href="/users/logout" class="nav-link">Logout</a>
+                <a class="nav-link" asp-controller="Users" asp-action="SignIn">Sign In</a>
+
               </li>
             }
 
-
-          }
-
-          else
-
-          {
             <li class="nav-item">
-              <a class="nav-link" asp-controller="Flight" asp-action="Index">Home</a>
-
+              <div class="dropdown">
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Çeviri</button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a asp-controller="Flight" asp-action="ChangeLanguage" asp-route-culture="en-US" class="dropdown-item"> <i class="flag-icon flag-icon-gb"></i>
+                        English
+                      </a>
+                    </li>
+                     <li>
+                      <a asp-controller="Flight" asp-action="ChangeLanguage" asp-route-culture="tr-TR" class="dropdown-item"> <i class="flag-icon flag-icon-gb"></i>
+                        Türkçe
+                      </a>
+                    </li>
+                  </ul>
+              </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" asp-controller="Users" asp-action="SignUp">Sign up</a>
-
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" asp-controller="Users" asp-action="SignIn">Sign In</a>
-
-            </li>
-          }
-
-          <li class="nav-item">
-            <select class="form-select" aria-label="Default select example">
-              <option selected value="" value="1">
-                <a class="nav-link" language="english" asp-controller="Home" asp-action="Privacy">TR</a>
-
-              </option>
-              <option value="2">
-                <a class="nav-link" language="english" asp-controller="Home" asp-action="Privacy">EN</a>
-
-              </option>
-              <option value="3">
-                <a class="nav-link" language="english" asp-controller="Home" asp-action="Privacy">FR</a>
-
-              </option>
-            </select>
-          </li>
-        </ul>
+          </ul>
         </div>
-        
+
       </div>
       </div>
     </nav>

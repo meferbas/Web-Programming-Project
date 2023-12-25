@@ -75,7 +75,6 @@ C:\Users\Efe\Desktop\WebProgrammingProject\obj\Debug\net7.0\staticwebassets\msbu
 C:\Users\Efe\Desktop\WebProgrammingProject\obj\Debug\net7.0\staticwebassets.pack.json
 C:\Users\Efe\Desktop\WebProgrammingProject\obj\Debug\net7.0\staticwebassets.build.json
 C:\Users\Efe\Desktop\WebProgrammingProject\obj\Debug\net7.0\staticwebassets.development.json
-C:\Users\Efe\Desktop\WebProgrammingProject\obj\Debug\net7.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\Efe\Desktop\WebProgrammingProject\obj\Debug\net7.0\scopedcss\bundle\AirlineSeatReservationSystem.styles.css
 C:\Users\Efe\Desktop\WebProgrammingProject\obj\Debug\net7.0\scopedcss\projectbundle\AirlineSeatReservationSystem.bundle.scp.css
 C:\Users\Efe\Desktop\WebProgrammingProject\obj\Debug\net7.0\AirlineSeatReservationSystem.csproj.CopyComplete
@@ -84,3 +83,13 @@ C:\Users\Efe\Desktop\WebProgrammingProject\obj\Debug\net7.0\refint\AirlineSeatRe
 C:\Users\Efe\Desktop\WebProgrammingProject\obj\Debug\net7.0\AirlineSeatReservationSystem.pdb
 C:\Users\Efe\Desktop\WebProgrammingProject\obj\Debug\net7.0\AirlineSeatReservationSystem.genruntimeconfig.cache
 C:\Users\Efe\Desktop\WebProgrammingProject\obj\Debug\net7.0\ref\AirlineSeatReservationSystem.dll
+C:\Users\Efe\Desktop\WebProgrammingProject\obj\Debug\net7.0\AirlineSeatReservationSystem.csproj.GenerateResource.cache
+C:\Users\Efe\Desktop\WebProgrammingProject\obj\Debug\net7.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\Efe\Desktop\WebProgrammingProject\bin\Debug\net7.0\en-US\AirlineSeatReservationSystem.resources.dll
+C:\Users\Efe\Desktop\WebProgrammingProject\bin\Debug\net7.0\tr-TR\AirlineSeatReservationSystem.resources.dll
+C:\Users\Efe\Desktop\WebProgrammingProject\obj\Debug\net7.0\en-US\AirlineSeatReservationSystem.resources.cs
+C:\Users\Efe\Desktop\WebProgrammingProject\obj\Debug\net7.0\en-US\AirlineSeatReservationSystem.resources.dll
+C:\Users\Efe\Desktop\WebProgrammingProject\obj\Debug\net7.0\tr-TR\AirlineSeatReservationSystem.resources.cs
+C:\Users\Efe\Desktop\WebProgrammingProject\obj\Debug\net7.0\tr-TR\AirlineSeatReservationSystem.resources.dll
+C:\Users\Efe\Desktop\WebProgrammingProject\obj\Debug\net7.0\AirlineSeatReservationSystem.Resources.SharedResource.en-US.resources
+C:\Users\Efe\Desktop\WebProgrammingProject\obj\Debug\net7.0\AirlineSeatReservationSystem.Resources.SharedResource.tr-TR.resources
