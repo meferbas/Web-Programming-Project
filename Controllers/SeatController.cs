@@ -14,6 +14,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Logging;
+using AirlineSeatReservationSystem.Services;
+using Microsoft.AspNetCore.Localization;
 
 
 namespace AirlineSeatReservationSystem.Controllers
@@ -23,16 +25,37 @@ namespace AirlineSeatReservationSystem.Controllers
         private readonly ISeatRepository _seatRepository;
         private readonly IBookingRepository _bookingRepository;
         private IFlightRepository _repository;
-
+        private readonly ILogger<SeatController> _logger;
+        private readonly LanguageService _localization;
         private readonly DataContext _context;
-        public SeatController(ISeatRepository seatRepository, DataContext context, IFlightRepository repository, IBookingRepository bookingRepository)
+        public SeatController(ISeatRepository seatRepository, DataContext context, IFlightRepository repository, IBookingRepository bookingRepository, ILogger<SeatController> logger, LanguageService localization)
         {
             _bookingRepository = bookingRepository;
             _seatRepository = seatRepository;
             _context = context;
             _repository = repository;
+            _logger = logger;
+            _localization = localization;
+
         }
 
+        public IActionResult Index()
+        {
+            ViewBag.Seat = _localization.Getkey("Seat").Value;
+            ViewBag.Choose = _localization.Getkey("Choose").Value;
+            return View();
+        }
+        public IActionResult ChangeLanguage(string culture)
+        {
+            Response.Cookies.Append(CookieRequestCultureProvider.DefaultCookieName, CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+            new CookieOptions()
+            {
+                Expires = DateTimeOffset.UtcNow.AddYears(1)
+
+            });
+            return Redirect(Request.Headers["Referer"].ToString());
+        }
+        
         public IActionResult ChooseSeats(int flightId)
         {
             var flightExists = _context.Flights.Any(f => f.FlightId == flightId);

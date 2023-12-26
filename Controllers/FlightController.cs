@@ -33,13 +33,24 @@ public class FlightController : Controller
         ViewBag.Guest = _localization.Getkey("Guest").Value;
         ViewBag.Round = _localization.Getkey("Round Trip").Value;
         ViewBag.One = _localization.Getkey("One Way").Value;
-
-
+        ViewBag.Adult = _localization.Getkey("Adult").Value;
+        ViewBag.Child = _localization.Getkey("Child").Value;
+        ViewBag.Infant = _localization.Getkey("Infant").Value;
+        ViewBag.Age = _localization.Getkey("age").Value;
+        ViewBag.Flights = _localization.Getkey("Flights").Value;
+        ViewBag.Logout = _localization.Getkey("Logout").Value;
+        ViewBag.SignUp = _localization.Getkey("Sign Up").Value;
+        ViewBag.SignIn = _localization.Getkey("Sign In").Value;
+        ViewBag.Choose = _localization.Getkey("Choose").Value;
+        ViewBag.Time = _localization.Getkey("Time").Value;
+        ViewBag.NewFlight = _localization.Getkey("New Flight").Value;
+        ViewBag.Seat = _localization.Getkey("Seat").Value;
+        ViewBag.Choose = _localization.Getkey("Choose").Value;
+        
 
         var currentCulture = Thread.CurrentThread.CurrentCulture.Name;
         return View();
     }
-
     public IActionResult ChangeLanguage(string culture)
     {
         Response.Cookies.Append(CookieRequestCultureProvider.DefaultCookieName, CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
@@ -110,6 +121,7 @@ public class FlightController : Controller
         return View();
     }
 
+
     [Authorize]
     public async Task<IActionResult> SearchFlights(FlightViewModel model)
     {
@@ -121,6 +133,7 @@ public class FlightController : Controller
 
             // Ortak kriterler
             query = query.Where(f => f.From == model.From && f.To == model.To && f.Guest == model.Guest);
+
 
             // One Way ise Return tarihini dikkate alma.
             if (model.IsOneWay)

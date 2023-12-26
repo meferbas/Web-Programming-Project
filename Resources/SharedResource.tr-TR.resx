@@ -145,4 +145,88 @@
     <value>Tek Yön</value>
     <comment>One Way</comment>
   </data>
+  <data name="Adult" xml:space="preserve">
+    <value>Yetişkin</value>
+    <comment>Adult</comment>
+  </data>
+  <data name="Child" xml:space="preserve">
+    <value>Çocuk</value>
+    <comment>Adult</comment>
+  </data>
+  <data name="Infant" xml:space="preserve">
+    <value>Bebek</value>
+    <comment>Infant</comment>
+  </data>
+  <data name="age" xml:space="preserve">
+    <value>yaş</value>
+    <comment>age</comment>
+  </data>
+  <data name="Flights" xml:space="preserve">
+    <value>Uçuşlarım</value>
+    <comment>Flights</comment>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Çıkış</value>
+    <comment>Logout</comment>
+  </data>
+  <data name="Sign Up" xml:space="preserve">
+    <value>Kayıt Ol</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="Sign In" xml:space="preserve">
+    <value>Giriş Yap</value>
+    <comment>Sign In</comment>
+  </data>
+  <data name="Departure Time" xml:space="preserve">
+    <value>Kalkış Saati</value>
+    <comment>Departure Time</comment>
+  </data>
+  <data name="Departure Date" xml:space="preserve">
+    <value>Gidiş Tarihi</value>
+    <comment>Departure Date</comment>
+  </data>
+  <data name="Return Date" xml:space="preserve">
+    <value>Dönüş Tarihi</value>
+    <comment>Return Date</comment>
+  </data>
+  <data name="Seat Number" xml:space="preserve">
+    <value>Koltuk Numarası</value>
+    <comment>Seat Number</comment>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Şifre</value>
+    <comment>Password</comment>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Kullanıcı Adı</value>
+    <comment>UserName</comment>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Telefon</value>
+    <comment>Phone</comment>
+  </data>
+  <data name="Repeat" xml:space="preserve">
+    <value>(Tekrar girin)</value>
+    <comment>Repeat</comment>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Saat</value>
+    <comment>Time</comment>
+  </data>
+  <data name="Choose" xml:space="preserve">
+    <value>Seçim</value>
+    <comment>Choose</comment>
+  </data>
+  <data name="New Flight" xml:space="preserve">
+    <value>Yeni Uçuş</value>
+    <comment>New Flight</comment>
+  </data>
+  <data name="Seat" xml:space="preserve">
+    <value>Koltuk</value>
+    <comment>Seat</comment>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Giriş</value>
+    <comment>Login</comment>
+  </data>
 </root>

@@ -13,6 +13,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using AirlineSeatReservationSystem.Services;
+using Microsoft.AspNetCore.Localization;
 
 
 namespace AirlineSeatReservationSystem.Controllers
@@ -22,10 +24,12 @@ namespace AirlineSeatReservationSystem.Controllers
 
         private readonly IBookingRepository _bookingRepository;
         private readonly ISeatRepository _seatRepository;
+        private readonly ILogger<UsersController> _logger;
 
+        private readonly LanguageService _localization;
         private readonly IUserRepository _userRepository;
         private readonly IFlightRepository _flightRepository;
-        public UsersController(IBookingRepository bookingRepository, IUserRepository usersRepository, IFlightRepository flightRepository, ISeatRepository seatRepository)
+        public UsersController(IBookingRepository bookingRepository, IUserRepository usersRepository, IFlightRepository flightRepository, ISeatRepository seatRepository, ILogger<UsersController> logger, LanguageService localization)
         {
             _bookingRepository = bookingRepository;
 
@@ -33,13 +37,36 @@ namespace AirlineSeatReservationSystem.Controllers
             _flightRepository = flightRepository;
 
             _seatRepository = seatRepository;
+            _logger = logger;
+            _localization = localization;
         }
 
         public async Task<IActionResult> Index()
         {
+            ViewBag.UserName = _localization.Getkey("UserName").Value;
+            ViewBag.Phone = _localization.Getkey("Phone").Value;
+            ViewBag.Password = _localization.Getkey("Password").Value;
+            ViewBag.Repeat = _localization.Getkey("Repeat").Value;
+            ViewBag.SignIn = _localization.Getkey("Login").Value;
+            ViewBag.SignIn = _localization.Getkey("Sign Up").Value;
+
+
+
+
+            var currentCulture = Thread.CurrentThread.CurrentCulture.Name;
             return View(await _userRepository.Users.ToListAsync());
         }
-        // [Authorize]
+        public IActionResult ChangeLanguage(string culture)
+        {
+            Response.Cookies.Append(CookieRequestCultureProvider.DefaultCookieName, CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+            new CookieOptions()
+            {
+                Expires = DateTimeOffset.UtcNow.AddYears(1)
+
+            });
+            return Redirect(Request.Headers["Referer"].ToString());
+        }
+
         public IActionResult SignUp()
         {
             return View();
@@ -99,7 +126,7 @@ namespace AirlineSeatReservationSystem.Controllers
                     useClaims.Add(new Claim(ClaimTypes.NameIdentifier, isUser.UserNo.ToString()));
                     useClaims.Add(new Claim(ClaimTypes.Name, isUser.UserName ?? ""));
                     useClaims.Add(new Claim(ClaimTypes.NameIdentifier, isUser.Email ?? ""));
-                    if (isUser.Email == "g211210013@sakarya.edu.tr" && isUser.Password == "sau" ||isUser.Email == "g201210093@sakarya.edu.tr" &&  isUser.Password == "sau")
+                    if (isUser.Email == "g211210013@sakarya.edu.tr" && isUser.Password == "sau" || isUser.Email == "g201210093@sakarya.edu.tr" && isUser.Password == "sau")
                     {
                         useClaims.Add(new Claim(ClaimTypes.Role, "admin"));
                     }
@@ -124,7 +151,7 @@ namespace AirlineSeatReservationSystem.Controllers
 
             return View(model);
         }
-        
+
 
     }
 }

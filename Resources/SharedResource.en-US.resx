@@ -145,4 +145,88 @@
     <value>One Way</value>
     <comment>One Way</comment>
   </data>
+  <data name="Adult" xml:space="preserve">
+    <value>Adult</value>
+    <comment>Adult</comment>
+  </data>
+  <data name="Child" xml:space="preserve">
+    <value>Child</value>
+    <comment>Child</comment>
+  </data>
+  <data name="Infant" xml:space="preserve">
+    <value>Infant</value>
+    <comment>Infant</comment>
+  </data>
+  <data name="age" xml:space="preserve">
+    <value>age</value>
+    <comment>age</comment>
+  </data>
+  <data name="Flights" xml:space="preserve">
+    <value>Flights</value>
+    <comment>Flights</comment>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logout</value>
+    <comment>Logout</comment>
+  </data>
+  <data name="Sign Up" xml:space="preserve">
+    <value>Sign Up</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="Sign In" xml:space="preserve">
+    <value>Sign In</value>
+    <comment>Sign in</comment>
+  </data>
+  <data name="Departure Time" xml:space="preserve">
+    <value>Departure Time</value>
+    <comment>Departure Time</comment>
+  </data>
+  <data name="Departure Date" xml:space="preserve">
+    <value>Departure Date</value>
+    <comment>Departure Date</comment>
+  </data>
+  <data name="Return Date" xml:space="preserve">
+    <value>Return Date</value>
+    <comment>Return Date</comment>
+  </data>
+  <data name="Seat Number" xml:space="preserve">
+    <value>Seat Number</value>
+    <comment>Seat Number</comment>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+    <comment>Password</comment>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>User Name</value>
+    <comment>UserName</comment>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Phone</value>
+    <comment>Phone</comment>
+  </data>
+  <data name="Repeat" xml:space="preserve">
+    <value>Repeat</value>
+    <comment>Repeat</comment>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Time</value>
+    <comment>Time</comment>
+  </data>
+  <data name="Choose" xml:space="preserve">
+    <value>Choose</value>
+    <comment>Chooose</comment>
+  </data>
+  <data name="New Flight" xml:space="preserve">
+    <value>New Flight</value>
+    <comment>New Flight</comment>
+  </data>
+  <data name="Seat" xml:space="preserve">
+    <value>Seat</value>
+    <comment>Seat</comment>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+    <comment>Login</comment>
+  </data>
 </root>

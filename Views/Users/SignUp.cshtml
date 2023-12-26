@@ -8,18 +8,18 @@
 
   <div class="col-12">
     <div class=" p-4"></div>
-    <h2>Sign Up</h2>
+    <h2> @_localization.Getkey("Sign Up").Value</h2>
     <form action="SignUp" method="post" novalidate>
       <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
       <div class="mb-3">
-        <label asp-for="UserName" class="form-label"></label>
+        <label asp-for="UserName" class="form-label"> @_localization.Getkey("UserName").Value</label>
         <input asp-for="UserName" class="form-control" />
         <span asp-validation-for="UserName" class="text-danger"></span>
       </div>
 
       <div class="mb-3">
-        <label asp-for="Phone" class="form-label"></label>
+        <label asp-for="Phone" class="form-label"> @_localization.Getkey("Phone").Value</label>
         <input asp-for="Phone" class="form-control" />
         <span asp-validation-for="Phone" class="text-danger"></span>
       </div>
@@ -32,18 +32,18 @@
 
 
       <div class="mb-3">
-        <label asp-for="Password" class="form-label"></label>
+        <label asp-for="Password" class="form-label"> @_localization.Getkey("Password").Value</label>
         <input asp-for="Password" class="form-control" />
         <span asp-validation-for="Email" class="text-danger"></span>
       </div>
 
 
       <div class="mb-3">
-        <label asp-for="ConfirmPassword" class="form-label"></label>
+        <label asp-for="ConfirmPassword" class="form-label"> @_localization.Getkey("Password").Value  @_localization.Getkey("Repeat").Value</label>
         <input asp-for="ConfirmPassword" class="form-control" />
         <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
       </div>
-      <button type="submit" class="btn btn-danger">Register</button>
+      <button type="submit" class="btn btn-danger">@_localization.Getkey("Sign Up").Value</button>
     </form>
   </div>
 </div>

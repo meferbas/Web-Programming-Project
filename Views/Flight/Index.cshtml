@@ -104,9 +104,9 @@
                 <label asp-for="Guest" class="fw-bold fs-8">@_localization.Getkey("Guest").Value</label>
                 <select class="form-select inp-height inp-width" name="Guest" aria-label="Default select example"
                   asp-for="Guest">
-                  <option value="Adult">Adult</option>
-                  <option value="Child(2-12 age)">Child(2-12 age)</option>
-                  <option value="Infant(0-2 age)">Infant(0-2 age)</option>
+                  <option value="Adult">@_localization.Getkey("Adult").Value</option>
+                  <option value="Child(2-12 age)">@_localization.Getkey("Child").Value (2-12) @_localization.Getkey("age").Value</option>
+                  <option value="Infant(0-2 age)">@_localization.Getkey("Infant").Value (0-2) @_localization.Getkey("age").Value</option>
                 </select>
               </div>
               <div class="row mt-3">
@@ -133,18 +133,14 @@
       document.getElementById("to").value = from;
     }
 
-    // Return tarih seçiminin devre dışı bırakılmasını veya etkinleştirilmesini kontrol eden fonksiyon
     function toggleReturnDate(isOneWay) {
       var returnDateInput = document.getElementById('returnDate');
       var isOneWayInput = document.getElementById('IsOneWay');
 
-      // Return tarihini devre dışı bırak veya etkinleştir
       returnDateInput.disabled = isOneWay;
 
-      // Hidden input alanını güncelle
       isOneWayInput.value = isOneWay.toString();
 
-      // One Way seçiliyse Return tarihini temizle
       if (isOneWay) {
         returnDateInput.value = '';
       }

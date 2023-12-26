@@ -1,6 +1,6 @@
 @model MyBookingsViewModel
 
-<h2 class="text-white py-3">My Bookings</h2>
+<h2 class="text-white py-3"></h2>
 <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" /> 
 @if (Model.Bookings.Any()) {
 <div class="row">
@@ -9,12 +9,12 @@
     <table class="table table-bordered table-dark">
       <thead>
         <tr>
-          <th>From</th>
-          <th>To</th>
-          <th>Departure Time</th>
-          <th>Departure Date</th>
-          <th>Return Date</th>
-          <th>Seat Number</th>
+          <th>@_localization.Getkey("From").Value</th>
+          <th>@_localization.Getkey("To").Value</th>
+          <th>@_localization.Getkey("Departure Time").Value</th>
+          <th>@_localization.Getkey("Departure Date").Value</th>
+          <th>@_localization.Getkey("Return Date").Value</th>
+          <th>@_localization.Getkey("Seat Number").Value</th>
         </tr>
       </thead>
 
@@ -26,7 +26,7 @@
           <td>@booking.Flight.Time</td>
           <td>@booking.Flight.Depart</td>
           <td>@booking.Flight.Return</td>
-          <td>@booking.Seat.SeatNumber</td>
+          <td> @_localization.Getkey("Seat").Value @booking.Seat.SeatNumber.Substring(5)</td>
         </tr>
         }
       </tbody>
