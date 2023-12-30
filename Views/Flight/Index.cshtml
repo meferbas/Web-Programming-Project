@@ -1,5 +1,12 @@
 ﻿@model FlightViewModel
 
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
 @if (TempData["SuccessMessage"] != null)
 
 {

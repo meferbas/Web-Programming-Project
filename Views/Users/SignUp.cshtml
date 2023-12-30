@@ -1,50 +1,59 @@
 @model SignUpViewModel
 
-<header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
   <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
-</header>
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
 <body>
-  <div class="row">
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header bg-dark text-white" >
+            <h2 class="text-center">@_localization.Getkey("Sign Up").Value</h2>
+          </div>
+          <div class="card-body">
+            <form action="SignUp" method="post" novalidate>
+              <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-  <div class="col-12">
-    <div class=" p-4"></div>
-    <h2>@_localization.Getkey("Sign Up").Value</h2>
-    <form action="SignUp" method="post" novalidate>
-      <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+              <div class="mb-3">
+                <label asp-for="UserName" class="form-label">@_localization.Getkey("UserName").Value</label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+              </div>
 
-      <div class="mb-3">
-        <label asp-for="UserName" class="form-label">@_localization.Getkey("UserName").Value</label>
-        <input asp-for="UserName" class="form-control" />
-        <span asp-validation-for="UserName" class="text-danger"></span>
+              <div class="mb-3">
+                <label asp-for="Phone" class="form-label">@_localization.Getkey("Phone").Value</label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+              </div>
+
+              <div class="mb-3">
+                <label asp-for="Email" class="form-label">@_localization.Getkey("Email").Value</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+              </div>
+
+              <div class="mb-3">
+                <label asp-for="Password" class="form-label">@_localization.Getkey("Password").Value</label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+              </div>
+
+              <div class="mb-3">
+                <label asp-for="ConfirmPassword" class="form-label">@_localization.Getkey("Password").Value @_localization.Getkey("Repeat").Value</label>
+                <input asp-for="ConfirmPassword" type="password" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+              </div>
+
+              <button type="submit" class="btn btn-danger">@_localization.Getkey("Sign Up").Value</button>
+            </form>
+          </div>
+        </div>
       </div>
-
-      <div class="mb-3">
-        <label asp-for="Phone" class="form-label">@_localization.Getkey("Phone").Value</label>
-        <input asp-for="Phone" class="form-control" />
-        <span asp-validation-for="Phone" class="text-danger"></span>
-      </div>
-
-      <div class="mb-3">
-        <label asp-for="Email" class="form-label"></label>
-        <input asp-for="Email" class="form-control" />
-        <span asp-validation-for="Email" class="text-danger"></span>
-      </div>
-
-
-      <div class="mb-3">
-        <label asp-for="Password" class="form-label">@_localization.Getkey("Password").Value</label>
-        <input asp-for="Password" class="form-control" />
-        <span asp-validation-for="Email" class="text-danger"></span>
-      </div>
-
-
-      <div class="mb-3">
-        <label asp-for="ConfirmPassword" class="form-label">@_localization.Getkey("Password").Value  @_localization.Getkey("Repeat").Value</label>
-        <input asp-for="ConfirmPassword" class="form-control" />
-        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-      </div>
-      <button type="submit" class="btn btn-danger">@_localization.Getkey("Sign Up").Value</button>
-    </form>
+    </div>
   </div>
-</div>
 </body>
+</html>

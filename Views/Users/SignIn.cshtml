@@ -1,58 +1,73 @@
 @model SignInViewModel
-<link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+  <!-- Bootstrap CSS linkini eklediğinizden emin olun -->
+</head>
+<body>
+  <div class="container my-5">  
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header bg-dark text-white">
+            <h2 class="text-center">@_localization.Getkey("Sign In").Value</h2>
+          </div>
+          <div class="card-body">
+            <form action="SignIn" method="post">
+              <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-<div class="row">
-  <div class="col-12">
-    <div class="p-4"></div>
-    <h2>@_localization.Getkey("Sign In").Value</h2>
-    <form action="SignIn" method="post">
-      <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+              <div class="mb-3">
+                <label asp-for="Email" class="form-label">@_localization.Getkey("Email").Value</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+              </div>
 
-      <div class="mb-3">
-        <label asp-for="Email" class="form-label"></label>
-        <input asp-for="Email" class="form-control" />
-        <span asp-validation-for="Email" class="text-danger"></span>
+              <div class="mb-3">
+                <label asp-for="Password" class="form-label">@_localization.Getkey("Password").Value</label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+              </div>
+
+              <button type="submit" class="btn btn-danger">@_localization.Getkey("Login").Value</button>
+            </form>
+          </div>
+        </div>
       </div>
-
-      <div class="mb-3">
-        <label asp-for="Password" class="form-label"></label>
-        <input asp-for="Password" class="form-control" />
-        <span asp-validation-for="Email" class="text-danger"></span>
-      </div>
-
-      <button type="submit" class="btn btn-danger">@_localization.Getkey("Login").Value</button>
-    </form>
+    </div>
   </div>
-</div>
-
-<script>
-  document.getElementById('loginForm').addEventListener('submit', function(event) {
-      event.preventDefault(); // Form gönderimini engelle
   
-      var email = document.querySelector('[name="email"]').value;
-      var password = document.querySelector('[name="password"]').value;
-  
-      fetch('/signin', { // Kullanıcı girişi için sunucu tarafı endpoint'inize uygun URL'yi kullanın
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ email: email, password: password })
-      })
-      .then(response => {
-          if (!response.ok) {
-              throw new Error('Login failed');
-          }
-          return response.json();
-      })
-      .then(data => {
-          // Token'ı localStorage'a kaydet
-          localStorage.setItem('jwtToken', data.token);
-          // Başarıyla giriş yapıldı, kullanıcıyı yönlendir
-          window.location.href = '/flight'; // Bu kısım sunucunuzun uygun endpoint'ine yönlendirme yapmalıdır
-      })
-      .catch(error => {
-          console.error('Error during login:', error);
-      });
-  });
-  </script>
+  <!-- Aşağıdaki scripti Bootstrap veya diğer JS dosyalarından sonra yerleştirin -->
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Form gönderimini engelle
+    
+        var email = document.querySelector('[name="email"]').value;
+        var password = document.querySelector('[name="password"]').value;
+    
+        fetch('/signin', { // Kullanıcı girişi için sunucu tarafı endpoint'inize uygun URL'yi kullanın
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email: email, password: password })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Login failed');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Token'ı localStorage'a kaydet
+            localStorage.setItem('jwtToken', data.token);
+            // Başarıyla giriş yapıldı, kullanıcıyı yönlendir
+            window.location.href = '/flight'; // Bu kısım sunucunuzun uygun endpoint'ine yönlendirme yapmalıdır
+        })
+        .catch(error => {
+            console.error('Error during login:', error);
+        });
+    });
+    </script>
+</body>
+</html>
